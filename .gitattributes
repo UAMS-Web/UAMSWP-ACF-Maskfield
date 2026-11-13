@@ -1,2 +1,10 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Development-only paths stay out of release archives.
+/vendor/ export-ignore
+/tests/ export-ignore
+/phpunit.xml export-ignore
+/composer.json export-ignore
+/composer.lock export-ignore
+/local-ci.json export-ignore
