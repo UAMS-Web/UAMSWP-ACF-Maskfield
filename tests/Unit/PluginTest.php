@@ -8,10 +8,8 @@
 
 declare(strict_types=1);
 
-use function Brain\Monkey\Functions\when;
 use function Brain\Monkey\Actions\expectAdded;
-use Brain\Monkey\Actions;
-use Brain\Monkey\Functions;
+use function Brain\Monkey\Functions\when;
 
 beforeEach(function (): void {
     when('plugin_dir_url')->justReturn('https://example.org/wp-content/plugins/uamswp-acf-maskfield/');
