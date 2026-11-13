@@ -34,6 +34,21 @@
       "requires": ["bin:node"]
     },
     {
+      "name": "pint",
+      "run": "vendor/bin/pint --test",
+      "paths": ["**/*.php", "!vendor/**", "pint.json", "composer.lock"]
+    },
+    {
+      "name": "rector",
+      "run": "vendor/bin/rector process --dry-run",
+      "paths": ["**/*.php", "!vendor/**", "rector.php", "rector-sweep.php", "composer.lock"]
+    },
+    {
+      "name": "phpstan",
+      "run": "vendor/bin/phpstan analyse --memory-limit=1G --no-progress",
+      "paths": ["**/*.php", "!vendor/**", "phpstan.neon.dist", "composer.lock"]
+    },
+    {
       "name": "pest",
       "run": "vendor/bin/pest",
       "paths": ["**/*.php", "!vendor/**", "phpunit.xml*", "composer.lock"]

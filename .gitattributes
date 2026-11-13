@@ -8,3 +8,8 @@
 /composer.json export-ignore
 /composer.lock export-ignore
 /local-ci.json export-ignore
+/pint.json export-ignore
+/rector.php export-ignore
+/rector-sweep.php export-ignore
+/phpstan.neon.dist export-ignore
+/.git-blame-ignore-revs export-ignore

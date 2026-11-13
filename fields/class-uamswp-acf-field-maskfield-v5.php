@@ -9,15 +9,15 @@
  */
 
 // exit if accessed directly
-if (!defined('ABSPATH')) {
+if (! defined('ABSPATH')) {
     exit;
 }
 
-
 // check if class already exists
-if (!class_exists('uamswp_acf_field_maskfield')) {
+if (! class_exists('uamswp_acf_field_maskfield')) {
 
-    class uamswp_acf_field_maskfield extends acf_field {
+    class uamswp_acf_field_maskfield extends acf_field
+    {
         /*
          *  __construct
          *
@@ -30,8 +30,16 @@ if (!class_exists('uamswp_acf_field_maskfield')) {
          *  @param	n/a
          *  @return	n/a
          */
-
-        function __construct($settings) {
+        /**
+         * @param  array<string, mixed>  $settings
+         */
+        public function __construct(/**
+         * Settings passed in by the plugin file (version, url, path).
+         *
+         * @var array<string, mixed>
+         */
+            public $settings
+        ) {
 
             /*
              *  name (string) Single word, no spaces. Underscores allowed
@@ -39,13 +47,11 @@ if (!class_exists('uamswp_acf_field_maskfield')) {
 
             $this->name = 'maskfield';
 
-
             /*
              *  label (string) Multiple words, can include spaces, visible when selecting a field type
              */
 
             $this->label = __('Mask Field', 'acf-maskfield');
-
 
             /*
              *  category (string) basic | content | choice | relational | jquery | layout | CUSTOM GROUP NAME
@@ -53,32 +59,22 @@ if (!class_exists('uamswp_acf_field_maskfield')) {
 
             $this->category = 'basic';
 
-
             /*
              *  defaults (array) Array of default settings which are merged into the field object. These are used later in settings
              */
 
-            $this->defaults = array(
+            $this->defaults = [
                 'input_mask' => '',
-            );
-
+            ];
 
             /*
              *  l10n (array) Array of strings that are used in JavaScript. This allows JS strings to be translated in PHP and loaded via:
              *  var message = acf._e('maskfield', 'error');
              */
 
-            $this->l10n = array(
+            $this->l10n = [
                 'error' => __('Error! Please enter a higher value', 'acf-maskfield'),
-            );
-
-
-            /*
-             *  settings (array) Store plugin settings (url, path, version) as a reference for later use with assets
-             */
-
-            $this->settings = $settings;
-
+            ];
 
             // do not delete!
             parent::__construct();
@@ -97,7 +93,8 @@ if (!class_exists('uamswp_acf_field_maskfield')) {
          *  @return	n/a
          */
 
-        function render_field_settings($field) {
+        public function render_field_settings($field): void
+        {
 
             /*
              *  acf_render_field_setting
@@ -109,12 +106,12 @@ if (!class_exists('uamswp_acf_field_maskfield')) {
              *  Please note that you must also have a matching $defaults value for the field name (input_mask)
              */
 
-            acf_render_field_setting($field, array(
+            acf_render_field_setting($field, [
                 'label' => __('Input Mask', 'acf-maskfield'),
                 'instructions' => __("Add the input Mask. Example: 'mask': '99-9999999'. More info in https://github.com/RobinHerbots/Inputmask", 'acf-maskfield'),
                 'type' => 'text',
-                'name' => 'input_mask'
-            ));
+                'name' => 'input_mask',
+            ]);
         }
 
         /*
@@ -132,7 +129,8 @@ if (!class_exists('uamswp_acf_field_maskfield')) {
          *  @return	n/a
          */
 
-        function render_field($field) {
+        public function render_field($field): void
+        {
 
             /*
              *  Create a simple text input using the 'input_mask' setting.
@@ -156,30 +154,28 @@ if (!class_exists('uamswp_acf_field_maskfield')) {
          *  @return	n/a
          */
 
-        function input_admin_enqueue_scripts() {
+        public function input_admin_enqueue_scripts(): void
+        {
 
             // vars
             $url = $this->settings['url'];
             $version = $this->settings['version'];
 
             // register & include JS
-            wp_register_script('acf-' . $this->name, "{$url}assets/js/input.js", array('jquery', 'acf-input'), $version);
-            wp_register_script('inputmask', "{$url}assets/vendor/inputmask/jquery.inputmask.bundle.js", array('jquery'), $version);
-            wp_enqueue_script('acf-' . $this->name);
+            wp_register_script('acf-'.$this->name, "{$url}assets/js/input.js", ['jquery', 'acf-input'], $version);
+            wp_register_script('inputmask', "{$url}assets/vendor/inputmask/jquery.inputmask.bundle.js", ['jquery'], $version);
+            wp_enqueue_script('acf-'.$this->name);
             wp_enqueue_script('inputmask');
 
-
             // register & include CSS
-            wp_register_style('acf-' . $this->name, "{$url}assets/css/input.css", array('acf-input'), $version);
-            wp_enqueue_style('acf-' . $this->name);
+            wp_register_style('acf-'.$this->name, "{$url}assets/css/input.css", ['acf-input'], $version);
+            wp_enqueue_style('acf-'.$this->name);
         }
-
     }
 
-// initialize
+    // initialize
     new uamswp_acf_field_maskfield($this->settings);
 
-
-// class_exists check
+    // class_exists check
 }
 ?>
