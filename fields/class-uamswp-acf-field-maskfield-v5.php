@@ -1,4 +1,13 @@
 <?php
+
+/*
+ * Origin: this field class is based on acf-maskfield (https://github.com/aluckyar/acf-maskfield)
+ * by Alejandro Lucena Archilla (comerline.es), released under the MIT License.
+ * Copyright (c) 2018 Alejandro Lucena Archilla (comerline.es). The MIT copyright and
+ * permission notice is in LICENSE-MIT.md and stays with copies and substantial portions
+ * of this code.
+ */
+
 // exit if accessed directly
 if (!defined('ABSPATH')) {
     exit;

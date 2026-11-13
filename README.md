@@ -37,7 +37,9 @@ composer test
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This plugin is licensed under the GNU General Public License, version 2 or later: see [LICENSE](LICENSE).
+
+It is based on [acf-maskfield](https://github.com/aluckyar/acf-maskfield) by Alejandro Lucena Archilla (comerline.es), which is released under the MIT License: see [LICENSE-MIT.md](LICENSE-MIT.md) for its copyright and permission notice.
 
 ### Version 1.0.0 - Not tracked
 - Initial Commit
