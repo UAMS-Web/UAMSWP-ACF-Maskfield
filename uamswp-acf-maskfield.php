@@ -4,6 +4,8 @@
   Plugin Name: UAMSWP Advanced Custom Fields: Mask Field
   Plugin URI: https://github.com/UAMS-Web/UAMSWP-ACF-Maskfield
   Description: Acf Field with Input Mask
+  Author: UAMS Web Services
+  Author URI: https://communications.uams.edu/web/
   Version: 1.0.0
   Requires PHP: 8.2
   License: GPLv2 or later
