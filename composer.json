@@ -8,7 +8,13 @@
     },
     "require-dev": {
         "brain/monkey": "^2.7",
-        "pestphp/pest": "^5.3"
+        "laravel/pint": "^1.32",
+        "pestphp/pest": "^5.3",
+        "php-stubs/acf-pro-stubs": "^6.8",
+        "php-stubs/wordpress-stubs": "^6.8",
+        "phpstan/phpstan": "^2.3",
+        "rector/rector": "^2.8",
+        "szepeviktor/phpstan-wordpress": "^2.0"
     },
     "config": {
         "platform": {
@@ -21,7 +27,14 @@
     },
     "scripts": {
         "test": "@test:unit",
-        "test:unit": "pest"
+        "test:unit": "pest",
+        "stan": "phpstan analyse --memory-limit=1G",
+        "refactor": "rector process",
+        "refactor:sweep": "rector process --config=rector-sweep.php",
+        "test:refactor": "rector process --dry-run",
+        "test:refactor:sweep": "rector process --dry-run --config=rector-sweep.php",
+        "pint": "pint",
+        "test:pint": "pint --test"
     },
     "scripts-descriptions": {
         "test": "Run the test suite.",
