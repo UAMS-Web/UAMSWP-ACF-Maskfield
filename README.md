@@ -30,10 +30,16 @@ composer test
 
 `vendor/bin/pest` runs the same suite. Tests live in `tests/Unit/`, and each file is named `*Test.php`. Before a pull request, run the shared local CI runner: `node .claude/skills/local-ci/local-ci.mjs`.
 
-## Authors
+## Credits
 
-* **Alejandro Lucena Archilla** - [www.comerline.es](http://www.comerline.es/)
-* **Todd McKee** - [www.uams.edu](https://www.uams.edu/)
+Developed and maintained by UAMS Web Services.
+
+Developers:
+
+- Josh Daugherty
+- Todd McKee
+
+Based on [acf-maskfield](https://github.com/aluckyar/acf-maskfield) by Alejandro Lucena Archilla ([comerline.es](http://www.comerline.es/)), released under the MIT License. See [License](#license).
 
 ## License
 
