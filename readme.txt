@@ -3,7 +3,7 @@ Contributors: Alejandro Lucena Archilla (comerline.es), Todd McKee (uams.edu)
 Tags: acf, acf-pro, jquery inputmask, acf-maskfield
 Requires at least: 5
 Tested up to: 6.0.7
-Stable tag: trunk
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
