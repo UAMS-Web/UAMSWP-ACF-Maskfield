@@ -74,11 +74,11 @@ if (! class_exists('uamswp_acf_plugin_maskfield')) {
          *  @date	17/02/2016
          *  @since	1.0.0
          *
-         *  @param	$version (int) major ACF version. Defaults to false
+         *  @param	n/a (WordPress passes the major ACF version; it is not used)
          *  @return	void
          */
 
-        public function include_field($version = false): void
+        public function include_field(): void
         {
 
             // load textdomain
