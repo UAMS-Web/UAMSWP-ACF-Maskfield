@@ -34,10 +34,12 @@
         "test:refactor": "rector process --dry-run",
         "test:refactor:sweep": "rector process --dry-run --config=rector-sweep.php",
         "pint": "pint",
-        "test:pint": "pint --test"
+        "test:pint": "pint --test",
+        "mutate": "pest tests/Unit/PluginTest.php tests/Unit/FieldTest.php tests/Unit/FieldFileLoadTest.php --mutate --path=fields,uamswp-acf-maskfield.php"
     },
     "scripts-descriptions": {
         "test": "Run the test suite.",
-        "test:unit": "Run the Pest suite that needs no WordPress and no database."
+        "test:unit": "Run the Pest suite that needs no WordPress and no database.",
+        "mutate": "Run the mutation pass over the plugin and field class."
     }
 }

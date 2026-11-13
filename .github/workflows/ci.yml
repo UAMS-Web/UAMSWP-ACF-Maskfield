@@ -8,8 +8,8 @@ name: CI
 # - This repository is public, so the `RUN_REMOTE_CI` switch does not reach it and the chain
 #   runs on every pull request without a gate. A gated `CI` would fail every pull request while
 #   the switch is off.
-# - `mutate: false`: mutation testing has its own ticket. The `mutate-ignore` job is skipped
-#   with it.
+# - Mutation testing is on. A pull request mutates only the PHP files it changes under
+#   `mutate-paths`; a manual run mutates everything `composer mutate` covers.
 # - `download-archive` is not switched on yet: the repository has no `.gitattributes` keep-list,
 #   so the check fails until UAMS-Web/UAMSWP-ACF-Maskfield#2 lands.
 
@@ -40,7 +40,8 @@ jobs:
     uses: UAMS-Web/uams-ci-workflows/.github/workflows/ci.yml@v0.10.1
     with:
       linux-only: true
-      mutate: false
+      mutate-paths: fields uamswp-acf-maskfield.php
+      mutate-ignore-paths: fields uamswp-acf-maskfield.php
       floor-lint: true
       floor-lint-php: '8.2'
       floor-lint-command: git ls-files -z -- '*.php' ':!tests/**' | xargs -0 -n1 php -l
