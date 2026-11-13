@@ -2,10 +2,20 @@
 
 /*
   Plugin Name: UAMSWP Advanced Custom Fields: Mask Field
+  Plugin URI: https://github.com/UAMS-Web/UAMSWP-ACF-Maskfield
   Description: Acf Field with Input Mask
   Version: 1.0.0
+  Requires PHP: 8.2
   License: GPLv2 or later
   License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+/*
+ * Origin: this plugin is based on acf-maskfield (https://github.com/aluckyar/acf-maskfield)
+ * by Alejandro Lucena Archilla (comerline.es), released under the MIT License.
+ * Copyright (c) 2018 Alejandro Lucena Archilla (comerline.es). The MIT copyright and
+ * permission notice is in LICENSE-MIT.md and stays with copies and substantial portions
+ * of this code.
  */
 
 // exit if accessed directly

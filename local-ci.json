@@ -1,0 +1,42 @@
+{
+  "_spell": "cspell:ignore analyse .",
+  "base": "main",
+  "php": "8.4",
+  "chain": false,
+  "guard": {
+    "deny": [
+      "wp-config\\.php$",
+      "\\.sql(\\.gz)?$",
+      "\\.(csv|tsv|xlsx?)$",
+      "\\.env(\\.|$)",
+      "\\.pem$",
+      "\\.key$"
+    ]
+  },
+  "jobs": [
+    {
+      "name": "lint",
+      "run": "php -l",
+      "each": ["**/*.php", "!vendor/**"],
+      "always": true
+    },
+    {
+      "name": "lint-floor",
+      "run": "php -l",
+      "php": "8.2",
+      "each": ["**/*.php", "!vendor/**", "!tests/**"],
+      "always": true
+    },
+    {
+      "name": "synced-files",
+      "run": "node .claude/skills/synced-files/scripts/check-synced-files.mjs",
+      "always": true,
+      "requires": ["bin:node"]
+    },
+    {
+      "name": "pest",
+      "run": "vendor/bin/pest",
+      "paths": ["**/*.php", "!vendor/**", "phpunit.xml*", "composer.lock"]
+    }
+  ]
+}

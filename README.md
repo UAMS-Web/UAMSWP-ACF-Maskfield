@@ -19,6 +19,17 @@ This ACF field type is compatible with:
 3. Create a new field via ACF and select the Mask Field Input type
 4. Read the description above for usage instructions
 
+## Tests
+
+The suite is Pest 5 with Brain Monkey, so it runs with no database and no WordPress checkout. It needs PHP 8.4 and Composer.
+
+```bash
+composer install
+composer test
+```
+
+`vendor/bin/pest` runs the same suite. Tests live in `tests/Unit/`, and each file is named `*Test.php`. Before a pull request, run the shared local CI runner: `node .claude/skills/local-ci/local-ci.mjs`.
+
 ## Authors
 
 * **Alejandro Lucena Archilla** - [www.comerline.es](http://www.comerline.es/)
@@ -26,7 +37,9 @@ This ACF field type is compatible with:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This plugin is licensed under the GNU General Public License, version 2 or later: see [LICENSE](LICENSE).
+
+It is based on [acf-maskfield](https://github.com/aluckyar/acf-maskfield) by Alejandro Lucena Archilla (comerline.es), which is released under the MIT License: see [LICENSE-MIT.md](LICENSE-MIT.md) for its copyright and permission notice.
 
 ### Version 1.0.0 - Not tracked
 - Initial Commit
