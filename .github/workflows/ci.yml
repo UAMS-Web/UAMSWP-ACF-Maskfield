@@ -9,7 +9,7 @@ name: CI
 #   runs on every pull request without a gate. A gated `CI` would fail every pull request while
 #   the switch is off.
 # - Mutation testing is on. A pull request mutates only the PHP files it changes under
-#   `mutate-paths`; a manual run mutates everything `composer mutate` covers.
+#   `mutate-paths`; a manual or scheduled run mutates everything `composer mutate` covers.
 # - `download-archive` is not switched on yet: the repository has no `.gitattributes` keep-list,
 #   so the check fails until UAMS-Web/UAMSWP-ACF-Maskfield#2 lands.
 
@@ -19,6 +19,12 @@ on:
     branches: [main]
   # Lets the workflow be run on demand against a branch.
   workflow_dispatch:
+  # The weekly full mutation pass: a scheduled run mutates everything `composer mutate` covers,
+  # which catches drift from a dependency or tooling change that no pull request touches. A
+  # schedule runs on the default branch, and GitHub disables it after 60 days without
+  # repository activity. Mondays at 07:17 UTC.
+  schedule:
+    - cron: '17 7 * * 1'
 
 # A new push to a pull request cancels that pull request's stale run, so a pull request keeps
 # one group. Every other run (a push to the default branch, a manual run) gets a group of its
