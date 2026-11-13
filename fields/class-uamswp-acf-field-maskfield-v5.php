@@ -173,7 +173,7 @@ if (! class_exists('uamswp_acf_field_maskfield')) {
         }
     }
 
-    // initialize
+    // initialize the field type (scratch edit)
     new uamswp_acf_field_maskfield($this->settings);
 
     // class_exists check
