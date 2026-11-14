@@ -22,14 +22,19 @@ if (! class_exists('AcfFieldCalls')) {
 if (! class_exists('acf_field')) {
     class acf_field
     {
+        /** @var string */
         public $name;
 
+        /** @var string */
         public $label;
 
+        /** @var string */
         public $category;
 
+        /** @var array<string, mixed> */
         public $defaults;
 
+        /** @var array<string, string> */
         public $l10n;
 
         public function __construct()

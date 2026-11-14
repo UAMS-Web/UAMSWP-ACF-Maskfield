@@ -80,19 +80,11 @@ if (! class_exists('uamswp_acf_field_maskfield')) {
             parent::__construct();
         }
 
-        /*
-         *  render_field_settings()
+        /**
+         * Creates extra settings for the field, shown when editing it.
          *
-         *  Create extra settings for your field. These are visible when editing a field
-         *
-         *  @type	action
-         *  @since	3.6
-         *  @date	23/01/13
-         *
-         *  @param	$field (array) the $field being edited
-         *  @return	n/a
+         * @param  array<string, mixed>  $field  The field being edited.
          */
-
         public function render_field_settings($field): void
         {
 
@@ -114,21 +106,11 @@ if (! class_exists('uamswp_acf_field_maskfield')) {
             ]);
         }
 
-        /*
-         *  render_field()
+        /**
+         * Creates the HTML interface for the field.
          *
-         *  Create the HTML interface for your field
-         *
-         *  @param	$field (array) the $field being rendered
-         *
-         *  @type	action
-         *  @since	3.6
-         *  @date	23/01/13
-         *
-         *  @param	$field (array) the $field being edited
-         *  @return	n/a
+         * @param  array<string, mixed>  $field  The field being rendered.
          */
-
         public function render_field($field): void
         {
 

@@ -22,6 +22,9 @@ function plugin_dir_path(string $file): string
     return $file.'path';
 }
 
+/**
+ * @param  array<int, mixed>  $callback
+ */
 function add_action(string $hook, array $callback): void
 {
     $GLOBALS['hooks'][] = [$hook, $callback[1]];
