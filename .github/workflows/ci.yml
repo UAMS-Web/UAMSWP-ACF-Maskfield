@@ -10,8 +10,8 @@ name: CI
 #   the switch is off.
 # - Mutation testing is on. A pull request mutates only the PHP files it changes under
 #   `mutate-paths`; a manual or scheduled run mutates everything `composer mutate` covers.
-# - `download-archive` is not switched on yet: the repository has no `.gitattributes` keep-list,
-#   so the check fails until UAMS-Web/UAMSWP-ACF-Maskfield#2 lands.
+# - `download-archive` is on: `.gitattributes` holds the keep-list, and the job fails a pull
+#   request that would put anything but what the plugin runs into the GitHub download.
 
 on:
   pull_request:
@@ -48,6 +48,8 @@ jobs:
       linux-only: true
       mutate-paths: fields uamswp-acf-maskfield.php
       mutate-ignore-paths: fields uamswp-acf-maskfield.php
+      download-archive: true
+      download-archive-command: node .claude/skills/download-archive-check/check-download-archive.mjs
       floor-lint: true
       floor-lint-php: '8.2'
       floor-lint-command: git ls-files -z -- '*.php' ':!tests/**' | xargs -0 -n1 php -l

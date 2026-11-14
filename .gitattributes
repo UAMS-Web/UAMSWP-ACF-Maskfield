@@ -1,15 +1,19 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-# Development-only paths stay out of release archives.
-/vendor/ export-ignore
-/tests/ export-ignore
-/phpunit.xml export-ignore
-/composer.json export-ignore
-/composer.lock export-ignore
-/local-ci.json export-ignore
-/pint.json export-ignore
-/rector.php export-ignore
-/rector-sweep.php export-ignore
-/phpstan.neon.dist export-ignore
-/.git-blame-ignore-revs export-ignore
+# The GitHub download holds only what the plugin runs (the keep-list from the
+# `keep-the-download-to-what-runs` rule). The first two lines leave out every top-level
+# entry, dot-entries included; each `-export-ignore` line after them puts one back.
+/* export-ignore
+/.* export-ignore
+
+# What the plugin runs.
+/uamswp-acf-maskfield.php -export-ignore
+/fields -export-ignore
+/assets -export-ignore
+
+# Kept on purpose: the licenses (the field class is MIT-licensed code that must travel with
+# its notice, in LICENSE-MIT.md) and the plugin readme that carries the stable tag.
+/LICENSE -export-ignore
+/LICENSE-MIT.md -export-ignore
+/readme.txt -export-ignore
