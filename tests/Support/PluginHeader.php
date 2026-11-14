@@ -32,3 +32,17 @@ function read_file_data_like_core(string $file, array $headers): array
 
     return $data;
 }
+
+/**
+ * A header field as get_file_data() reads it: the pattern WordPress runs over the first 8 KB, written out separately from the stand-in above.
+ */
+function plugin_header_test_field(string $source, string $field): ?string
+{
+    $pattern = '/^(?:[ \t]*<\?php)?[ \t\/*#@]*'.preg_quote($field, '/').':\s+(.*)$/mi';
+
+    if (preg_match($pattern, substr($source, 0, 8192), $matches) !== 1) {
+        return null;
+    }
+
+    return trim((string) preg_replace('/\s*(?:\*\/|\?>).*/', '', $matches[1]));
+}

@@ -8,26 +8,14 @@
 
 declare(strict_types=1);
 
+require_once __DIR__.'/../Support/PluginHeader.php';
+
 /**
  * The plugin's main file, read as text.
  */
 function plugin_header_test_source(): string
 {
     return (string) file_get_contents(dirname(__DIR__, 2).'/uamswp-acf-maskfield.php');
-}
-
-/**
- * A header field as get_file_data() reads it: the pattern WordPress runs over the first 8 KB.
- */
-function plugin_header_test_field(string $source, string $field): ?string
-{
-    $pattern = '/^(?:[ \t]*<\?php)?[ \t\/*#@]*'.preg_quote($field, '/').':\s+(.*)$/mi';
-
-    if (preg_match($pattern, substr($source, 0, 8192), $matches) !== 1) {
-        return null;
-    }
-
-    return trim((string) preg_replace('/\s*(?:\*\/|\?>).*/', '', $matches[1]));
 }
 
 it('writes the Version header as a three-segment release number', function (): void {
