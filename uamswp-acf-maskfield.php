@@ -6,7 +6,7 @@
   Description: Acf Field with Input Mask
   Author: UAMS Web Services
   Author URI: https://communications.uams.edu/web/
-  Version: 1.0.0
+  Version: 1.0.1
   Requires PHP: 8.2
   License: GPLv2 or later
   License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,7 +32,7 @@ if (! class_exists('uamswp_acf_plugin_maskfield')) {
     {
         // vars
         /**
-         * @var array{version: '1.0.0', url: mixed, path: mixed}
+         * @var array{version: '1.0.1', url: mixed, path: mixed}
          */
         public $settings;
 
@@ -55,7 +55,7 @@ if (! class_exists('uamswp_acf_plugin_maskfield')) {
             // settings
             // - these will be passed into the field class.
             $this->settings = [
-                'version' => '1.0.0',
+                'version' => '1.0.1',
                 'url' => plugin_dir_url(__FILE__),
                 'path' => plugin_dir_path(__FILE__),
             ];
