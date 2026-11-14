@@ -16,6 +16,9 @@ if (! defined('ABSPATH')) {
 // check if class already exists
 if (! class_exists('uamswp_acf_field_maskfield')) {
 
+    /**
+     * @property string $name
+     */
     class uamswp_acf_field_maskfield extends acf_field
     {
         /*
