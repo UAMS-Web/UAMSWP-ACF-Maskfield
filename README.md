@@ -28,7 +28,7 @@ composer install
 composer test
 ```
 
-`vendor/bin/pest` runs the same suite. Tests live in `tests/Unit/`, and each file is named `*Test.php`. Before a pull request, run the shared local CI runner: `node .claude/skills/local-ci/local-ci.mjs`.
+`vendor/bin/pest` runs the same suite. Tests live in `tests/Unit/`, and each file is named `*Test.php`. The remote `CI` check runs the full chain on every pull request, so run `composer test` before opening one.
 
 ## Credits
 
