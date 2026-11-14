@@ -53,7 +53,7 @@ parameters:
     # from 0 upward (see the code-quality skill), then raise it by one per
     # change as findings are fixed, until `max`. Lowering it is a deliberate,
     # argued change, not a quiet edit to get a red run green.
-    level: 9
+    level: 10
 
     # The directories and files holding first-party PHP, including
     # the plugin header file at the root. Include tests: test bugs are real
@@ -164,6 +164,19 @@ parameters:
             message: '#^Variable \$this might not be defined\.$#'
             path: fields/class-uamswp-acf-field-maskfield-v5.php
             count: 1
+        # Level 10 treats that same file-scope `$this` as `mixed`, so its two
+        # uses (reading `settings` and passing it to the constructor) are
+        # reported too. Same cause, pinned to the file and to one use each.
+        -
+            identifier: property.nonObject
+            message: '#^Cannot access property \$settings on mixed\.$#'
+            path: fields/class-uamswp-acf-field-maskfield-v5.php
+            count: 1
+        -
+            identifier: argument.type
+            message: '#^Parameter \#1 \$settings of class uamswp_acf_field_maskfield constructor expects .*, mixed given\.$#'
+            path: fields/class-uamswp-acf-field-maskfield-v5.php
+            count: 1
         # The entry most plugins need once the level reaches 4, from
         # aether-wordpress-migration-api: the PHP version guard in the plugin header.
         # PHPStan analyzes at the `min` above, so
@@ -199,6 +212,14 @@ parameters:
             reportUnmatched: false
         # Pest routes its public API through classes it tags @internal;
         # calling them from a test is Pest's intended use.
+        # Pest binds the hook closure to the running test case, so `$this` is
+        # `mixed` to the analyzer; `test()` is typed as a proxy and has no
+        # `addToAssertionCount()`, so there is no typed route to the same call.
+        -
+            identifier: method.nonObject
+            message: '#^Cannot call method addToAssertionCount\(\) on mixed\.$#'
+            path: tests/Pest.php
+            reportUnmatched: false
         -
             identifier: method.internalClass
             message: '#of internal class Pest\\#'
