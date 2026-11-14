@@ -13,9 +13,12 @@ use Brain\Monkey\Functions;
 use function Brain\Monkey\Actions\expectAdded;
 use function Brain\Monkey\Functions\when;
 
+require_once __DIR__.'/../Support/PluginHeader.php';
+
 beforeEach(function (): void {
     when('plugin_dir_url')->justReturn('https://example.org/wp-content/plugins/uamswp-acf-maskfield/');
     when('plugin_dir_path')->justReturn('/var/www/wp-content/plugins/uamswp-acf-maskfield/');
+    when('get_file_data')->alias(read_file_data_like_core(...));
 
     // The file instantiates its class at file scope, so it loads once per process, in
     // whichever test runs first. Each test then builds its own instance.
@@ -33,7 +36,7 @@ it('passes its version, URL and path to the field class settings', function (): 
     $plugin = new uamswp_acf_plugin_maskfield;
 
     expect($plugin->settings)->toBe([
-        'version' => '1.0.1',
+        'version' => plugin_header_test_field((string) file_get_contents(dirname(__DIR__, 2).'/uamswp-acf-maskfield.php'), 'Version'),
         'url' => 'https://example.org/wp-content/plugins/uamswp-acf-maskfield/',
         'path' => '/var/www/wp-content/plugins/uamswp-acf-maskfield/',
     ]);

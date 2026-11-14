@@ -32,7 +32,7 @@ if (! class_exists('uamswp_acf_plugin_maskfield')) {
     {
         // vars
         /**
-         * @var array{version: '1.0.1', url: mixed, path: mixed}
+         * @var array{version: string, url: mixed, path: mixed}
          */
         public $settings;
 
@@ -54,8 +54,9 @@ if (! class_exists('uamswp_acf_plugin_maskfield')) {
 
             // settings
             // - these will be passed into the field class.
+            // - the header's Version is the only place the release number is written.
             $this->settings = [
-                'version' => '1.0.1',
+                'version' => get_file_data(__FILE__, ['Version' => 'Version'])['Version'],
                 'url' => plugin_dir_url(__FILE__),
                 'path' => plugin_dir_path(__FILE__),
             ];
