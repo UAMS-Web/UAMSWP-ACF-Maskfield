@@ -18,9 +18,9 @@ use function Brain\Monkey\Functions\when;
  * The file instantiates the class at file scope using `$this->settings`, so it is
  * loaded bound to a host object that carries settings, as the plugin object does.
  *
- * @param  array<string, mixed>  $settings
+ * @param  array{version: string, url: string, path: string}  $settings
  */
-function makeField(array $settings = ['url' => 'https://example.org/p/', 'version' => '9.9.9']): uamswp_acf_field_maskfield
+function makeField(array $settings = ['url' => 'https://example.org/p/', 'version' => '9.9.9', 'path' => '/p/']): uamswp_acf_field_maskfield
 {
     require_once __DIR__.'/../Support/AcfFieldStub.php';
 
@@ -64,7 +64,7 @@ it('translates the error string for JavaScript', function (): void {
 });
 
 it('keeps the settings it was given', function (): void {
-    $settings = ['url' => 'https://example.org/x/', 'version' => '2.0.0'];
+    $settings = ['url' => 'https://example.org/x/', 'version' => '2.0.0', 'path' => '/x/'];
 
     expect(makeField($settings)->settings)->toBe($settings);
 });
@@ -113,5 +113,5 @@ it('registers and enqueues its scripts and styles from the plugin URL', function
         ->once()->with('acf-maskfield', $url.'assets/css/input.css', ['acf-input'], '9.9.9');
     Functions\expect('wp_enqueue_style')->once()->with('acf-maskfield');
 
-    makeField(['url' => $url, 'version' => '9.9.9'])->input_admin_enqueue_scripts();
+    makeField(['url' => $url, 'version' => '9.9.9', 'path' => '/p/'])->input_admin_enqueue_scripts();
 });

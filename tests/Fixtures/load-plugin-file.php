@@ -10,7 +10,14 @@ declare(strict_types=1);
 
 define('ABSPATH', '/tmp/');
 
-$GLOBALS['hooks'] = [];
+/**
+ * Collects the hooks the plugin file registers, so the list keeps a known type.
+ */
+final class HookLog
+{
+    /** @var list<array{string, mixed}> */
+    public static array $hooks = [];
+}
 
 function plugin_dir_url(string $file): string
 {
@@ -27,10 +34,10 @@ function plugin_dir_path(string $file): string
  */
 function add_action(string $hook, array $callback): void
 {
-    $GLOBALS['hooks'][] = [$hook, $callback[1]];
+    HookLog::$hooks[] = [$hook, $callback[1]];
 }
 
 require __DIR__.'/../../uamswp-acf-maskfield.php';
 require __DIR__.'/../../uamswp-acf-maskfield.php';
 
-echo json_encode($GLOBALS['hooks']);
+echo json_encode(HookLog::$hooks);

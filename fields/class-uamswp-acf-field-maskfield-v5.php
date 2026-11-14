@@ -31,12 +31,12 @@ if (! class_exists('uamswp_acf_field_maskfield')) {
          *  @return	n/a
          */
         /**
-         * @param  array<string, mixed>  $settings
+         * @param  array{version: string, url: string, path: string}  $settings
          */
         public function __construct(/**
          * Settings passed in by the plugin file (version, url, path).
          *
-         * @var array<string, mixed>
+         * @var array{version: string, url: string, path: string}
          */
             public $settings
         ) {
@@ -109,7 +109,7 @@ if (! class_exists('uamswp_acf_field_maskfield')) {
         /**
          * Creates the HTML interface for the field.
          *
-         * @param  array<string, mixed>  $field  The field being rendered.
+         * @param  array{name: string, input_mask: string, value: string, required: mixed}  $field  The field being rendered.
          */
         public function render_field($field): void
         {
