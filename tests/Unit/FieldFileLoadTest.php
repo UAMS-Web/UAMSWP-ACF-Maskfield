@@ -11,12 +11,19 @@ declare(strict_types=1);
 
 /**
  * Runs a PHP snippet or script in a new process and returns its standard output.
+ *
+ * @throws RuntimeException When the process could not be started.
  */
 function runPhp(string ...$arguments): string
 {
     $command = escapeshellarg(PHP_BINARY).' '.implode(' ', array_map(escapeshellarg(...), $arguments)).' 2>&1';
     $output = shell_exec($command);
 
+    if ($output === false) {
+        throw new RuntimeException('Could not start a PHP process: '.$command);
+    }
+
+    // `shell_exec()` returns null when the process printed nothing.
     return $output ?? '';
 }
 
