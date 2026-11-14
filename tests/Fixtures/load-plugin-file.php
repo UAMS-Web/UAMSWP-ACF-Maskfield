@@ -10,6 +10,8 @@ declare(strict_types=1);
 
 define('ABSPATH', '/tmp/');
 
+require __DIR__.'/../Support/PluginHeader.php';
+
 /**
  * Collects the hooks the plugin file registers, so the list keeps a known type.
  */
@@ -27,6 +29,15 @@ function plugin_dir_url(string $file): string
 function plugin_dir_path(string $file): string
 {
     return $file.'path';
+}
+
+/**
+ * @param  array<string, string>  $headers
+ * @return array<string, string>
+ */
+function get_file_data(string $file, array $headers): array
+{
+    return read_file_data_like_core($file, $headers);
 }
 
 /**
