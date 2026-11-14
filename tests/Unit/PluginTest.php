@@ -33,7 +33,7 @@ it('passes its version, URL and path to the field class settings', function (): 
     $plugin = new uamswp_acf_plugin_maskfield;
 
     expect($plugin->settings)->toBe([
-        'version' => '1.0.0',
+        'version' => '1.0.1',
         'url' => 'https://example.org/wp-content/plugins/uamswp-acf-maskfield/',
         'path' => '/var/www/wp-content/plugins/uamswp-acf-maskfield/',
     ]);

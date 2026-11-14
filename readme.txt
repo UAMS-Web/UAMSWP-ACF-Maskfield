@@ -4,7 +4,7 @@ Tags: acf, acf-pro, jquery inputmask, acf-maskfield
 Requires at least: 5
 Requires PHP: 8.2
 Tested up to: 6.0.7
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,10 @@ This ACF field type is compatible with:
 4. Read the description above for usage instructions
 
 == Changelog ==
+
+= 1.0.1 =
+* The GitHub download holds only the files the plugin runs.
+* Static analysis raised to PHPStan level 10, with no change in behavior.
 
 = 1.0.0 =
 * Initial Release.

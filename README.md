@@ -47,5 +47,9 @@ This plugin is licensed under the GNU General Public License, version 2 or later
 
 It is based on [acf-maskfield](https://github.com/aluckyar/acf-maskfield) by Alejandro Lucena Archilla (comerline.es), which is released under the MIT License: see [LICENSE-MIT.md](LICENSE-MIT.md) for its copyright and permission notice.
 
+### Version 1.0.1
+- The GitHub download holds only the files the plugin runs
+- Static analysis raised to PHPStan level 10, with no change in behavior
+
 ### Version 1.0.0 - Not tracked
 - Initial Commit
