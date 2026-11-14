@@ -1,2 +1,4 @@
 /vendor/
 /.phpstan/
+# macOS Finder metadata
+.DS_Store
