@@ -2,6 +2,8 @@
 
 Adds Masked input to ACF.
 
+The [wiki](https://github.com/UAMS-Web/UAMSWP-ACF-Maskfield/wiki) has the documentation: a walkthrough, a guide to writing masks, the field reference and troubleshooting.
+
 ## Links
 
 * [jquery.inputmask.bundle.js](https://github.com/RobinHerbots/Inputmask) by [Robin Herbots](https://github.com/RobinHerbots)
@@ -17,7 +19,7 @@ This ACF field type is compatible with:
 1. Copy the `UAMSWP-ACF-Maskfield` folder into your `wp-content/plugins` folder
 2. Activate the ACF Mask Field plugin via the plugins admin page
 3. Create a new field via ACF and select the Mask Field Input type
-4. Read the description above for usage instructions
+4. Enter the mask in the field's Input Mask setting: see [Adding a masked field](https://github.com/UAMS-Web/UAMSWP-ACF-Maskfield/wiki/Adding-a-masked-field) in the wiki
 
 ## Tests
 
