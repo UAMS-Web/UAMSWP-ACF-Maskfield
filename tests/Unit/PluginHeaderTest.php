@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The main plugin file's Version header and the version it passes on, read as text so no WordPress is needed.
+ * The main plugin file's Version header and the version it passes on, and the WordPress floor the header and readme declare, read as text so no WordPress is needed.
  *
  * @see uamswp-acf-maskfield.php
  */
@@ -31,6 +31,14 @@ it('reads the settings version from the header and does not write it a second ti
 
 it('documents the settings version as a string, not a literal', function (): void {
     expect(preg_match('/@var array\{version: \'/', plugin_header_test_source()))->toBe(0);
+});
+
+it('declares the WordPress 6.8 floor in the header and the readme', function (): void {
+    $readme = (string) file_get_contents(dirname(__DIR__, 2).'/readme.txt');
+
+    expect(plugin_header_test_field(plugin_header_test_source(), 'Requires at least'))->toBe('6.8')
+        ->and(plugin_header_test_field($readme, 'Requires at least'))->toBe('6.8')
+        ->and(version_compare((string) plugin_header_test_field($readme, 'Tested up to'), '6.8', '>='))->toBeTrue();
 });
 
 it('finds the header version within the first 8 KB, as core reads it', function (): void {
